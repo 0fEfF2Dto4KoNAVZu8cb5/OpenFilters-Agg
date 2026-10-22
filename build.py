@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 
 BASE = "https://raw.githubusercontent.com/OpenFilters/internet-scanners/main/cidr/"
 INDEX = "https://api.github.com/repos/OpenFilters/internet-scanners/contents/cidr?ref=main"
-PATTERN = re.compile(r"[a-z0-9_]+_v([46])\\.txt\\Z")
+PATTERN = re.compile(r"[a-z0-9_]+_v([46])\.txt\Z")
 OUTPUT = Path("openfilters-all.txt")
 
 
@@ -72,7 +72,7 @@ def main():
     if len(combined) < 500:
         raise ValueError("Combined list unexpectedly small")
     temp = OUTPUT.with_suffix(".tmp")
-    temp.write_text("".join(f"{network}\\n" for network in combined), encoding="utf-8")
+    temp.write_text("".join(f"{network}\n" for network in combined), encoding="utf-8")
     temp.replace(OUTPUT)
     print(f"{len(sources)} sources; {len(combined)} CIDRs")
 
