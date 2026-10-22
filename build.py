@@ -13,7 +13,7 @@ OUTPUT = Path("openfilters-all.txt")
 
 
 def fetch(url):
-    request = Request(url, headers={"User-Agent": "feed-compiler"})
+    request = Request(url, headers={"User-Agent": "feed-compiler/1"})
     with urlopen(request, timeout=40) as response:
         data = response.read(2_000_001)
     if len(data) > 2_000_000:
